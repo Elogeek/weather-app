@@ -6,6 +6,7 @@ import {useState} from "react";
 import * as axios from "axios";
 
 import CurrentWeather from "./components/CurrentWeather";
+import {Forecasts} from "./components/Forecasts";
 
 const API_URL = (lat,lon) => "https://api.openweathermap.org/data/2.5/forecast?" +
     "lat={lat}" +
@@ -61,6 +62,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <CurrentWeather data={data}/>
+      <Forecasts data={data}></Forecasts>
     </View>
   );
 }
