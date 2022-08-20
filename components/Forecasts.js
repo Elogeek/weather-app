@@ -7,6 +7,7 @@ export default function Forecasts({data}){
     const [forecasts, setForecasts] = useState([]);
 
     useEffect(() => {
+        console.log(data);
         const forecastsData = data.list.map(f => {
             const dt = new Date(f.dt * 1000);
             return({
