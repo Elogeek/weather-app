@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {View, Text, Image, StyleSheet} from "react-native";
 import {isSameDay} from "date-fns";
 
-const getIcon = (icon) => "https://openweathermap.org/img/wn/${icon}@4x.png";
+const getIcon = (icon) => `http://openweathermap.org/img/wn/${icon}@4x.png`;
 
 export default function CurrentWeather({data}) {
 
@@ -22,22 +22,26 @@ export default function CurrentWeather({data}) {
     }, [data])
 
     return (
-        <>
+        <View style={styles.container}>
             <Text style={styles.city}>{data?.city?.name}</Text>
             <Text style={styles.today}>Aujourd'hui</Text>
-            <Image
-                source={{uri: getIcon(currentWeather?.weather[0].icon) }}
-                style={styles.image}
-            />
-            <Text style={styles.temp}>{Math.round(currentWeather?.main.temp)}'C</Text>
-            <Text style={styles.description}>{currentWeather?.weather[0].description}</Text>
-        </>
-    )
+
+            <Image source={{ uri: getIcon(CurrentWeather?.weather[0].icon) }} style={styles.image} />
+
+            <Text style={styles.temp}>{Math.round(CurrentWeather?.main.temp)}°C</Text>
+            <Text style={styles.description}>{CurrentWeather?.weather[0].description}</Text>
+        </View>
+    );
 }
 
 const COLOR = "#54565B";
 
 const styles = StyleSheet.create({
+    container: {
+        marginTop: 60,
+        alignItems: "center",
+        height: "65%"
+    },
     city: {
         fontSize: 36,
         fontWeight: "500",
@@ -51,7 +55,7 @@ const styles = StyleSheet.create({
     image: {
         width:150,
         height: 150,
-        marginVertical: 20
+        marginVertical: 10
     },
     temp: {
         fontSize: 80,
@@ -61,6 +65,7 @@ const styles = StyleSheet.create({
     description: {
         fontSize: 24,
         fontWeight: "bold",
-        color: COLOR
+        color: COLOR,
+        marginBottom: 20
     }
 });

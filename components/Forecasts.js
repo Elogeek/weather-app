@@ -1,7 +1,7 @@
 import React , {useEffect, useState} from "react";
 import {StyleSheet, View, Text, ScrollView} from "react-native";
 import {format} from "date-fns";
-import Weather from "./CurrentWeather";
+import Weather from "./Weather";
 
 export default function Forecasts({data}){
     const [forecasts, setForecasts] = useState([]);
