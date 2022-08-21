@@ -1,5 +1,5 @@
-import React , {useEffect, useState} from "react";
 import {StyleSheet, View, Text, Image} from "react-native";
+import React from "react";
 
 const getIcon = (icon) => `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
@@ -7,8 +7,12 @@ export default function Weather({forecast}){
 
     return(
         <View style={styles.container}>
-            <Text>{forecast.hour}</Text>
-            <Image source={{ uri: getIcon(forecast?.icon) }} style={styles.image} />
+
+            <Text>{forecast.hour}h</Text>
+            <Image
+                source={{ uri: getIcon(forecast?.icon) }}
+                style={styles.image}
+            />
             <Text style={styles.temp}>{forecast.temp}°C</Text>
         </View>
     );

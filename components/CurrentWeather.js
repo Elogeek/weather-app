@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {View, Text, Image, StyleSheet} from "react-native";
 import {isSameDay} from "date-fns";
 
-const getIcon = (icon) => `http://openweathermap.org/img/wn/${icon}@4x.png`;
+const getIcon = (icon) => `https://openweathermap.org/img/wn/${icon}@4x.png`;
 
 export default function CurrentWeather({data}) {
 
@@ -11,8 +11,9 @@ export default function CurrentWeather({data}) {
     // récupere le temps du jour via la date
     // voir docs : https://openweathermap.org/forecast5#5days
     useEffect(() => {
+        // la date actuelle
         const nowWeather = data.list.filter(forecast => {
-            //check si les dates sont identitiques
+            //check si les dates sont identitiques (date actuelle et date de la prévision météo)
             const today = new Date().getTime() + Math.abs(data.city.timezone * 1000) ;
             // la date de la prévision
             const forecastDate = new Date(forecast.dt * 1000);
