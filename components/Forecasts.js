@@ -9,7 +9,6 @@ export default function Forecasts({data}){
     const [forecasts, setForecasts] = useState([]);
 
     useEffect(() => {
-        const [forecasts,setForecasts] = useState([]);
 
         // affiche un tableau des temperatures "la liste de prévisions"
         const forecastsData = data.list.map(f => {
