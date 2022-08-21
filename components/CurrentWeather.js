@@ -8,14 +8,13 @@ export default function CurrentWeather({data}) {
 
     const [currentWeather, setCurrentWeather] = useState(null);
 
-    // récupere le temps du jour via la date
-    // voir docs : https://openweathermap.org/forecast5#5days
+    // Get the weather of the day via the date, see docs: https://openweathermap.org/forecast5#5days
     useEffect(() => {
-        // la date actuelle
+        // The current date
         const nowWeather = data.list.filter(forecast => {
-            //check si les dates sont identitiques (date actuelle et date de la prévision météo)
+            // Check if the dates are identical (current date and date of the weather forecast)
             const today = new Date().getTime() + Math.abs(data.city.timezone * 1000) ;
-            // la date de la prévision
+            // The date of the forecast
             const forecastDate = new Date(forecast.dt * 1000);
             return isSameDay(today, forecastDate);
         })
