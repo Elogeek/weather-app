@@ -6,8 +6,8 @@ const getIcon = (icon) => `https://openweathermap.org/img/wn/${icon}@2x.png`;
 export default function Weather({forecast}){
 
     return(
-        <View style={styles.container}>
 
+        <View style={styles.container}>
             <Text>{forecast.hour}h</Text>
             <Image
                 source={{ uri: getIcon(forecast?.icon) }}
@@ -15,6 +15,7 @@ export default function Weather({forecast}){
             />
             <Text style={styles.temp}>{forecast.temp}°C</Text>
         </View>
+
     );
 }
 

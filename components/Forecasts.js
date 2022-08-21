@@ -5,12 +5,13 @@ import {fr} from "date-fns/locale";
 import Weather from "./Weather";
 
 export default function Forecasts({data}){
+
     const [forecasts, setForecasts] = useState([]);
 
     useEffect(() => {
         const [forecasts,setForecasts] = useState([]);
 
-        // affiche un tableau des temperatures "plus propre" la liste de prévisions
+        // affiche un tableau des temperatures "la liste de prévisions"
         const forecastsData = data.list.map(f => {
             const dt = new Date(f.dt * 1000);
             return({
@@ -21,6 +22,8 @@ export default function Forecasts({data}){
                 name: format(dt, "EEEE", {locale: fr})
             });
         });
+
+        // Logique pour grouper les éléments par journée (name)
         setForecasts(forecastsData);
     }, [data]);
 
@@ -29,6 +32,7 @@ export default function Forecasts({data}){
         <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
+            style={styles.scroll}
         >
             {forecasts.map(f => (
                 <View>

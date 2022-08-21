@@ -1,9 +1,8 @@
-import * as React from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import Constants from "expo-constants";
 import * as Location from "expo-location";
-import {useState} from "react";
-import * as axios from "axios";
+import axios from "axios";
 
 import CurrentWeather from "./components/CurrentWeather";
 import Forecasts from "./components/Forecasts";
@@ -25,7 +24,7 @@ export default function App() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         // Retrieval of the user's position (where he is)
         const getCoordinates = async () => {
 
@@ -43,11 +42,11 @@ export default function App() {
     // Make a request to the server (city, current weather, forecast)
     const getWeather = async (location) => {
         try {
-            const response = axios.get(API_URL(location.coords.latitude, location.coords.longitude))
+            const response = await axios.get(API_URL(location.coords.latitude, location.coords.longitude));
             setData(response.data);
             setLoading(false);
         } catch (e) {
-            console.log("Error :" + setError(error))
+            console.log("Error dans getWeather :" + setError(error))
         }
     }
 
