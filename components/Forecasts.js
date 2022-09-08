@@ -36,7 +36,6 @@ export default function Forecasts({data}) {
                     <Text>{f.name}</Text>
                     <Weather forecast={f} />
                 </View>
-
             ))}
         </ScrollView>
 

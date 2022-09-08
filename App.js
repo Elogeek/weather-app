@@ -18,7 +18,7 @@ const API_URL = (lat, lon) =>
 
 export default function App() {
 
-    const [error, setError] = useState();
+    const [errorMsg, setErrorMsg] = useState(null);
 
     // Users datas recovery
     const [loading, setLoading] = useState(true);
@@ -30,7 +30,8 @@ export default function App() {
 
             const {status} = await Location.requestForegroundPermissionsAsync()
             if (status !== "granted") {
-                return alert("Il faut accepter de partager votre position, sinon l'app ne fonctionnera pas correctement !")
+                setErrorMsg('Permission to access location was denied');
+                return;
             }
 
             const userLocation = await Location.getCurrentPositionAsync();
@@ -46,7 +47,7 @@ export default function App() {
             setData(response.data);
             setLoading(false);
         } catch (e) {
-            console.log("Error dans getWeather :" + setError(error))
+            console.log("Error dans getWeather :" + setErrorMsg(errorMsg))
         }
     }
 
