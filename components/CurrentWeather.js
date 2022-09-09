@@ -37,6 +37,7 @@ export default function CurrentWeather({data}) {
     );
 }
 
+// Shortcut for to easy
 const COLOR = "#54565B";
 
 const styles = StyleSheet.create({

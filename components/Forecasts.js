@@ -27,7 +27,7 @@ export default function Forecasts({data}) {
     return (
 
         <ScrollView
-            horizontal
+            horizontal={true}
             showsHorizontalScrollIndicator={false}
             style={styles.scroll}
         >
